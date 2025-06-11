@@ -1,7 +1,1 @@
-retertert
-<<<<<<< HEAD
- 43434
-=======
-1111111111111111111111
->>>>>>> origin/dev
-erret
+retertert 0
