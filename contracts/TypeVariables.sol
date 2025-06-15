@@ -4,6 +4,7 @@
 pragma solidity ^0.8.26;
 
 contract TypeVariables {
+    // wqwq
     mapping(address => bool) buyers;
     uint256 public price = 2 ether;
     address public owner;
