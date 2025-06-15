@@ -2,66 +2,71 @@
 
 import { useEffect, useState } from "react";
 import Web3 from "web3";
-import Proger from "./Proger";
+
+declare global {
+  interface Window {
+    ethereum?: any;
+    web3?: {
+      currentProvider: any;
+    };
+  }
+}
 
 export default function Home() {
-  const [web3, setWeb3] = useState(null);
-  const [account, setAccount] = useState("");
-  const [balance, setBalance] = useState(0);
+  const [web3, setWeb3] = useState<Web3 | null>(null);
+  const [account, setAccount] = useState(null);
+  const [balance, setBalance] = useState("0");
   const [recipient, setRecipient] = useState("");
   const [amount, setAmount] = useState("");
 
-  useEffect(() => {
-    async function loadWeb3() {
-      //@ts-ignore
-      if (window.ethereum) {
-        //@ts-ignore
-        const web3 = new Web3(window.ethereum);
-        //@ts-ignore
-        await window.ethereum.enable();
-        //@ts-ignore
-        setWeb3(web3);
-        //@ts-ignore
-      } else if (window.web3) {
-        //@ts-ignore
-        setWeb3(new Web3(window.web3.currentProvider));
-      } else {
-        console.log("Браузер не поддерживает систему");
+  //useEffect(() => {
+  //  async function loadBlockChainData() {
+  //    if (web3) {
+  //      const accounts = await web3.eth.getAccounts();
+  //      setAccount(accounts[0]);
+  //      const networkId = await web3.eth.net.getId();
+  //      //@ts-ignore
+  //      const networkData = Proger.networks[networkId];
+
+  //      if (networkData) {
+  //        const token = new web3.eth.Contract(Proger.abi, networkData.address);
+  //        const balance = await token.methods.balanceOf(account).call();
+  //        //@ts-ignore
+  //        setBalance(balance.toString());
+  //      } else {
+  //        console.log("Токен не поддерживается");
+  //      }
+  //    }
+  //  }
+
+  //  if (web3) {
+  //    loadBlockChainData();
+  //  }
+  //}, [web3, account]);
+
+  const connectWallet1 = async () => {
+    if (typeof window.ethereum !== "undefined" && window.ethereum.isMetaMask) {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+
+        const web3Instance = new Web3(window.ethereum);
+        setWeb3(web3Instance); // если ты используешь состояние
+        setAccount(accounts[0]); // или что тебе нужно
+      } catch (error) {
+        console.error("Ошибка подключения:", error);
       }
-    }
-
-    async function loadBlockChainData() {
-      //@ts-ignore
-      const accounts = await web3.eth.getAccounts();
-      setAccount(accounts[0]);
-      //@ts-ignore
-      const networkId = await web3.eth.net.getId();
-      //@ts-ignore
-      const networkData = Proger.networks[networkId];
-
-      if (networkData) {
-        //@ts-ignore
-        const token = new web3.eth.Contract(Proger.abi, networkData.address);
-        //@ts-ignore
-        let balance = await token.methods.balanceOf(account[0].call());
-        setBalance(balance.toString());
-      } else {
-        console.log("Токен не поддерживается");
-      }
-    }
-
-    if (web3) {
-      loadBlockChainData;
     } else {
-      loadWeb3();
+      alert("MetaMask не установлен!");
     }
-  }, [web3]);
+  };
 
-  //@ts-ignore
-  const transferTokens = async (recipient, amount) => {};
+  const transferTokens = async (recipient: any, amount: any) => {};
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <button onClick={connectWallet1}>Подключить кошелёк</button>
         <h1>Ваш аккаунт: {account}</h1>
         <h1>Ваш баланс: {balance}</h1>
         <h1>Ваш баланс: {balance}</h1>
@@ -69,10 +74,10 @@ export default function Home() {
 
         <h1>Transfer token</h1>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            transferTokens(recipient, amount);
-          }}
+        //onSubmit={(e) => {
+        //  e.preventDefault();
+        //  transferTokens(recipient, amount);
+        //}}
         >
           <div>
             <label>Addres:</label>
