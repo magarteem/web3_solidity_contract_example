@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.26;
+import "hardhat/console.sol";
 
 contract TypeVariables {
     // wqwq
@@ -32,6 +33,12 @@ contract TypeVariables {
 
     function delivered() public {
         currentStatus = Status.Delivered;
+    }
+
+    function checked() public view {
+        if (currentStatus == Status.Paid) {
+            // code
+        }
     }
 
     // Struct (Сложные структуры данных)
@@ -89,6 +96,10 @@ contract TypeVariables {
         arrayInner = [[3, 4, 5], [6, 7, 8], [9, 10, 11], [12, 13, 14]];
         arrayDynamicLangth.push(4);
         arrayDynamicLangth.push(5);
+        arrayDynamicLangth.push(44);
+        console.log(arrayDynamicLangth.length);
+        arrayDynamicLangth.pop();
+        console.log(arrayDynamicLangth.length);
     }
 
     function calcLengthArray() public view returns (uint256) {
@@ -104,9 +115,15 @@ contract TypeVariables {
         return myVarDynamickLength[0]; //
     }
 
+    function forMappingArrays() public view {
+        for (uint256 i = 0; i < itemsStr.length; i++) {
+            console.log(itemsStr[i]);
+        }
+    }
+
     //временный массив
     function sampleMemory() public pure returns (uint256[] memory) {
-        uint256[] memory tempArray = new uint256[](10);
+        uint256[] memory tempArray = new uint256[](10); // Временный массив
         tempArray[3] = 1;
         return tempArray;
     }
