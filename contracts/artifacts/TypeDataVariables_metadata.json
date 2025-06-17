@@ -373,11 +373,11 @@
 	},
 	"sources": {
 		"contracts/TypeDataVariables.sol": {
-			"keccak256": "0xd439b289c8e941a08f34fd595abac4d0c12b95fd9a96d2857cf85a3d8f1c9da6",
+			"keccak256": "0xfa8b5437555f8790daabec4a011f9cc245683c70b2b2ea30314980cb55ada070",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7aeb73b25e96deca4a44b594d9c11744d661cc1dcb97b9b6746c7802a0206aec",
-				"dweb:/ipfs/QmeUQ8PW971FTN9v2cy9G1HXvfbjVBoRUxfuMGxA1y47oy"
+				"bzz-raw://6372484ab8e1929762d95b1bb1a9a1c99e1f1df5b6cd14cf9f88ed8600ccc164",
+				"dweb:/ipfs/QmSJhHLRJDDGjpBxpP4QQ3VePqThh7Vx4mqUaVFUbeY6qe"
 			]
 		},
 		"hardhat/console.sol": {

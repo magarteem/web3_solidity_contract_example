@@ -5,6 +5,19 @@ pragma solidity ^0.8.26;
 import "hardhat/console.sol";
 
 contract TypeDataVariables {
+    //
+    // int public  myInt; // int || uint
+    // string myString;
+    // bool myBool;
+    // mapping(address => string) public myMapping;
+    // myMapping[42] = "answer";
+    // address public  myAddress
+    // function sampleAddress(address payable _to) public {
+    //     uint256 num;
+    //     _to.transfer(num);
+    // }
+    //
+
     mapping(address => bool) buyers;
     uint256 public price = 2 ether;
     address public owner;

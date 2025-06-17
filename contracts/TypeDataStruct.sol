@@ -40,4 +40,43 @@ contract TypeDataStruct {
     {
         return balances[_addr].payments[_index];
     }
+
+    // Struct array ========================================
+    struct BalanceArray {
+        uint256 amount;
+        uint256 timestamp;
+    }
+
+    BalanceArray[] public balanceArrays;
+
+    function sampleStructArray() public payable {
+        BalanceArray memory balanceArr = BalanceArray(
+            msg.value,
+            block.timestamp
+        );
+
+        balanceArrays.push(balanceArr);
+    }
+
+    function sampleWidthraw(address payable _to) public {
+        uint256 titalBalanceArrays;
+
+        for (uint256 i = 0; i < balanceArrays.length; i++) {
+            titalBalanceArrays += balanceArrays[i].amount;
+        }
+
+        _to.transfer(titalBalanceArrays);
+    }
+
+    // Сложная структура ==================================================
+
+    struct PaymentStruct {
+        uint256 amount;
+        uint256 timestamp;
+    }
+
+    struct BalanceStruct {
+        uint256 totalBalance;
+        mapping(uint256 => PaymentStruct) variable;
+    }
 }
