@@ -130,12 +130,20 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {},
+			"methods": {
+				"getPaymentBalances(address,uint256)": {
+					"details": "This is just an example, it's not actually part of your contract!"
+				}
+			},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {},
+			"methods": {
+				"getPaymentBalances(address,uint256)": {
+					"notice": "A description of what this method does."
+				}
+			},
 			"version": 1
 		}
 	},
@@ -156,11 +164,11 @@
 	},
 	"sources": {
 		"contracts/TypeDataStruct.sol": {
-			"keccak256": "0x3d650794da8d2a24a8adb5648016cee6bca71d8a9d0adb053cf231a88e504565",
+			"keccak256": "0x8a737675a22cc9f4ee2b9fc8006250693e2cf9075aaba7ac9dd75ccab447dc53",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9d831ce6eaa90cffe6038994c3fe84356039844ca9e273fe812db1a5f814b217",
-				"dweb:/ipfs/QmSLRg1H3LiWF3Mu87iWHpQx4abk7hX5ngE7xf8b79jK9W"
+				"bzz-raw://976752796d1be3e2d96b3a834e9312221e1a617b61bf1aa84ad77e15563751a9",
+				"dweb:/ipfs/QmfXfnCXbWtwtKoxdAkdeBQ2vRzK3qHoXrWHXyNdFGmfwF"
 			]
 		},
 		"hardhat/console.sol": {

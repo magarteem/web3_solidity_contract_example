@@ -32,7 +32,12 @@ contract TypeDataStruct {
         );
         balances[msg.sender].payments[paymentNumber] = newPayment;
     }
-
+                               
+                               /**
+                                * @notice A description of what this method does.
+                                *
+                                * @dev This is just an example, it's not actually part of your contract!
+                                */
     function getPaymentBalances(address _addr, uint256 _index)
         public
         view
